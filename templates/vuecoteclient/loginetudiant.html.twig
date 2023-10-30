@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login Etudiant {% endblock %}
+
+{% block body %}
+
+ <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card-group d-block d-md-flex row">
+              <div class="card col-md-7 p-4 mb-0">
+                <div class="card-body">
+                  <h3>Login Etudiant</h3>
+                
+
+       
+    
+
+    {% if message|default(null) %}
+        <div class="alert alert-success">
+           {{ message }}
+        </div>
+    {% endif %}
+
+                
+                 
+                   <p class="text-medium-emphasis">( Votre mot de passe : votre date de naissance en format jj-mm-aaaa )</p>
+                   <form action="{{ path('app_accueil_traitement_login_etudiant') }}" method="post">
+                  <div class="input-group mb-3"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                      </svg></span>
+                     <input type="text" name="idetudiant" placeholder="Num etu" class="form-control" required>   
+                
+                  </div>
+                  <div class="input-group mb-3"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                      </svg></span>
+                  
+                    <input type="password"  name="mdp" placeholder="Mot de passe"  class="form-control"  required>
+                  </div>
+                
+                  <div class="row">
+                   
+                    <div style="text-align: center;">
+                     <button class="btn btn-lg btn-primary" type="submit" >
+        Connexion
+    </button>
+    </div>
+    </form>
+                  
+                    <div class="col-6 text-end">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </form>
+              <div class="card col-md-5 text-white bg-primary py-5">
+                <div class="card-body text-center">
+                  <div>
+                    <h2>Gestion de scolarité</h2>
+                    <p>Merci d'utiliser notre application sur la gestion de scolarité.</p>
+                    <button class="btn btn-lg btn-outline-light mt-3" type="button">Bienvenue!</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script>
+    </script>
+
+
+
+{% endblock %}

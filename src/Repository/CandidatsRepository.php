@@ -36,6 +36,32 @@ class CandidatsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
+
+public function findAllPasEncoreAdmis(): array
+    {
+      
+        return $this->createQueryBuilder('c')
+           ->andWhere('c.estdejaadmis is null')
+           // ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+public function getListeCandidatsAdmissible($placedispo): array
+    {
+        return $this->createQueryBuilder('c')
+          ->andWhere('c.estdejaadmis is null')
+            ->orderBy('c.moyennebacc', 'DESC')
+            ->setMaxResults($placedispo)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
+
 //    public function findOneBySomeField($value): ?Candidats
 //    {
 //        return $this->createQueryBuilder('c')

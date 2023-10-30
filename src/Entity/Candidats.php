@@ -26,6 +26,15 @@ class Candidats
     #[ORM\Column]
     private ?float $moyennebacc = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $estdejaadmis = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imagefichiername = null;
+
+   
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,4 +87,30 @@ class Candidats
 
         return $this;
     }
+
+    public function getEstdejaadmis(): ?string
+    {
+        return $this->estdejaadmis;
+    }
+
+    public function setEstdejaadmis(string $estdejaadmis): static
+    {
+        $this->estdejaadmis = $estdejaadmis;
+
+        return $this;
+    }
+
+    public function getImagefichiername(): ?string
+    {
+        return $this->imagefichiername;
+    }
+
+    public function setImagefichiername(string $imagefichiername): static
+    {
+        $this->imagefichiername = $imagefichiername;
+
+        return $this;
+    }
+
+   
 }

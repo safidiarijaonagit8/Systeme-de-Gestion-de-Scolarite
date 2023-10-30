@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paramètre {% endblock %}
+
+{% block body %}
+{{ include('sidebar.html.twig') }}
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      <header class="header header-sticky mb-4">
+        <div class="container-fluid">
+          <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <svg class="icon icon-lg">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+            </svg>
+          </button><a class="header-brand d-md-none" href="#">
+            <svg width="118" height="46" alt="CoreUI Logo">
+              <use xlink:href="assets/brand/coreui.svg#full"></use>
+            </svg></a>
+        
+         
+        </div>
+        <div class="header-divider"></div>
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+           
+          </nav>
+        </div>
+      </header>
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <div class="car"></div>
+          
+         
+          <div class="card mb-4">
+          
+            <div class="card-body">
+            
+              <div class="example">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-1002" role="tab">
+                      <svg class="icon me-2">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-media-play"></use>
+                      </svg>Liste paramètre</a></li>
+                 
+                </ul>
+                <div class="tab-content rounded-bottom">
+                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
+
+                 
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+               
+                <th>Semestre</th>
+                <th>Montant écolage</th>
+                <th>Nombre place dispo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parametre in parametres %}
+            <tr>
+              
+                <td>{{ parametre.semestre }}</td>
+                <td>{{ parametre.montantecolage|number_format(0, ',', '.') }} Ariary</td>
+                <td>{{ parametre.nbrplacedispo }} </td>
+                <td>
+                    <a href="{{ path('app_parametre_show', {'id': parametre.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('app_parametre_edit', {'id': parametre.id}) }}" class="btn btn-success">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de résultat</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<div style="text-align: center;">
+    <a href="{{ path('app_parametre_new') }}" class="btn btn-primary" >  Ajout paramètre</a>
+</div>
+                    
+                  </div>
+                </div>
+              </div>
+              
+       
+        
+     
+    </div>
+    
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script>
+    </script>
+
+
+    
+{% endblock %}

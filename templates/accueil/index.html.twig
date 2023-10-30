@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+ <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      <header class="header header-sticky mb-4">
+        <div class="container-fluid">
+          <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <svg class="icon icon-lg">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+            </svg>
+          </button><a class="header-brand d-md-none" href="#">
+            <svg width="118" height="46" alt="CoreUI Logo">
+              <use xlink:href="assets/brand/coreui.svg#full"></use>
+            </svg></a>
+          <ul class="header-nav d-none d-md-flex">
+            <li class="nav-item"><a class="nav-link" href="#">Page d' accueil</a></li>
+       
+          </ul>
+          <ul class="header-nav ms-auto">
+           
+         
+         
+          </ul>
+         
+        </div>
+        <div class="header-divider"> 
+        </br>
+        <div style="text-align: center;">
+        <a class="nav-link" href="{{ path('app_accueil_liste_etudiants')}}">
+                <svg class="icon icon-lg" >
+                  <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list-rich"></use>
+                </svg> Voir liste des étudiants admis </a>
+        </div>
+        </div>
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+             
+            </ol>
+          </nav>
+        </div>
+      </header>
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img class="d-block w-100" src="assets/img/2.png" alt="First slide">
+              </div>
+             
+            
+          </div>
+      </div>
+
+        </div>
+      </div>
+    
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script>
+    </script>
+
+
+{% endblock %}

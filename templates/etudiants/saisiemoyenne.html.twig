@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Saisie moyenne{% endblock %}
+
+{% block body %}
+
+  {{ include('sidebar.html.twig') }}
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      <header class="header header-sticky mb-4">
+        <div class="container-fluid">
+          <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <svg class="icon icon-lg">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+           
+            </svg>
+
+          </button><a class="header-brand d-md-none" href="#">
+            <svg width="118" height="46" alt="CoreUI Logo">
+              <use xlink:href="assets/brand/coreui.svg#full"></use>
+            </svg></a>
+        
+         
+        </div>
+        <div class="header-divider"></div>
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+           
+          </nav>
+        </div>
+      </header>
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <div class="car"></div>
+          
+         
+          <div class="card mb-4">
+            <div class="card-header"><strong>Saisir moyenne</strong></div>
+            <div class="card-body">
+            
+              <div class="example">
+               
+                <div class="tab-content rounded-bottom">
+                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
+                  
+                        <h3 style="margin-left: 350px;">Etudiant num {{ idetudiant }}</h3>
+                        <form action="{{ path('app_traitement_savemoyennesemestre') }}" method="POST">
+                        <input type="hidden" name="idetudiant" value="{{ idetudiant }}"/>
+                         <div class="tab-content rounded-bottom" style="width: 300px;margin-left: 300px;">
+                      <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1000">
+
+                        <select class="form-select" name="semestre" aria-label="Default select example">
+                         {% for p in parametres %}
+                        
+                          <option value="{{ p.semestre }}">Semestre {{ p.semestre }}</option>
+                        {% endfor %}
+
+                        </select>
+
+                      </div>
+                    </div>
+                    </br>
+                      <div class="mb-3">
+                       
+                        <div>    <input class="form-control" step=any min="0" style="width: 300px;margin-left: 300px;" type="number" placeholder="Moyenne générale" required aria-label="default input example" name="moyennegenerale">  </div>
+                        </div>
+                        </br>
+                         <button style="margin-left: 400px;" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                        </form>
+
+   
+ 
+
+    
+
+  
+
+                    
+                  </div>
+                </div>
+              </div>
+              
+       
+        
+     
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script>
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}testa{% endblock %}
+
+{% block body %}
+   
+  <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Num Etu</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Moyenne bacc</th>
+                <th></th>
+                 <th></th>
+                  <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for e in listeetudiants %}
+            <tr>
+                <td>{{ e.id }}</td>
+                <td>{{ e.nom }}</td>
+                <td>{{ e.prenom }}</td>
+                <td>{{ e.datedenaissance ? e.datedenaissance|date('d-m-Y') : '' }}</td>
+                <td>{{ e.moyennebacc }}</td>
+                <td>
+                    <a href="{{ path('app_traitement_saisiemoyennesemestre', {'idetudiant': e.id}) }}" class="btn btn-primary">Saisir moyenne</a>
+                      </td>
+                        <td>
+                     <a href="{{ path('app_traitement_saisiepaiementsemestre', {'idetudiant': e.id}) }}" class="btn btn-success">Paiement</a>  </td>
+                      <td>
+                      <a href="{{ path('app_traitement_etudiantfiche', {'idetudiant': e.id}) }}" class="btn btn-dark">Fiche</a>
+                      </td>
+                   
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas de résultat</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ knp_pagination_render(listeetudiants) }}
+{% endblock %}

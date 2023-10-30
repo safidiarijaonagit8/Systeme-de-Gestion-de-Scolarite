@@ -1,9 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Candidats{% endblock %}
+{% block title %}Candidat{% endblock %}
 
 {% block body %}
-    <h1>Candidats</h1>
+
+  {{ include('sidebar.html.twig') }}
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      <header class="header header-sticky mb-4">
+        <div class="container-fluid">
+          <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <svg class="icon icon-lg">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+            </svg>
+          </button><a class="header-brand d-md-none" href="#">
+            <svg width="118" height="46" alt="CoreUI Logo">
+              <use xlink:href="assets/brand/coreui.svg#full"></use>
+            </svg></a>
+          <ul class="header-nav d-none d-md-flex">
+           
+           
+          </ul>
+          
+        </div>
+        <div class="header-divider"></div>
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+           
+          </nav>
+        </div>
+      </header>
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <div class="car"></div>
+          
+         
+          <div class="card mb-4">
+            <div class="card-header"><strong>Candidature</strong><span class="small ms-1">Détails</span></div>
+            <div class="card-body">
+            
+              <div class="example">
+               
+                <div class="tab-content rounded-bottom">
+                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1002">
+                        <h3 style="text-align: center;">Candidat</h3>
+                      <div style="text-align: center;">
+                        
+                        <img src="uploads/images/{{candidat.imagefichiername}}" class="rounded-3" style="width: 150px;"
+  alt="Avatar" />
+                        </div>
+                        </br>
 
     <table class="table">
         <tbody>
@@ -16,23 +61,55 @@
                 <td>{{ candidat.nom }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
+                <th>Prénom</th>
                 <td>{{ candidat.prenom }}</td>
             </tr>
             <tr>
-                <th>Datedenaissance</th>
-                <td>{{ candidat.datedenaissance ? candidat.datedenaissance|date('Y-m-d') : '' }}</td>
+                <th>Date de naissance</th>
+                <td>{{ candidat.datedenaissance ? candidat.datedenaissance|date('d-m-Y') : '' }}</td>
             </tr>
             <tr>
-                <th>Moyennebacc</th>
+                <th>Moyenne bacc</th>
                 <td>{{ candidat.moyennebacc }}</td>
             </tr>
         </tbody>
     </table>
+    </br>
+   <div style="text-align: center;">
+    <a href="{{ path('app_candidats_index') }}"  class="btn btn-primary">Voir Liste</a>
 
-    <a href="{{ path('app_candidats_index') }}">back to list</a>
-
-    <a href="{{ path('app_candidats_edit', {'id': candidat.id}) }}">edit</a>
-
+    <a href="{{ path('app_candidats_edit', {'id': candidat.id}) }}" class="btn btn-success">Modifier</a>
+</div>
+</br>
     {{ include('candidats/_delete_form.html.twig') }}
+
+                    
+                  </div>
+                </div>
+              </div>
+              
+       
+        
+    
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script>
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 {% endblock %}
